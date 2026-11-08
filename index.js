@@ -23,6 +23,7 @@ export async function connectToMongoDB() {
 
 const mongoConnection = await connectToMongoDB()
 const database = mongoConnection.db('hireloop')
+const users = database.collection('user')
 const jobs = database.collection('jobs')
 
 
@@ -30,6 +31,11 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+app.get('/users', async(req,res)=>{
+    const cursor = users.find({})
+    const result = await cursor.toArray()
+    res.send(result)
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
