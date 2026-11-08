@@ -21,3 +21,14 @@ This repository contains the backend API, built with Node.js and Express.
 - MongoDB
 - CORS
 - dotenv
+
+
+
+## API Endpoints
+
+**Base URL:** [https://hireloop-jobs-server.vercel.app](https://hireloop-jobs-server.vercel.app)
+
+| Method | Endpoint | Description | Access |
+|---|---|---|---|
+| `GET` | `/` | Home route | Public |
+| `GET` | `/users` | Retrieve all users | Public |
