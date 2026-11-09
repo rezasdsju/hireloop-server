@@ -34,3 +34,4 @@ This repository contains the backend API, built with Node.js and Express.
 | `GET` | `/users` | Retrieve all users | Public |
 | `GET` | `/jobs` | Retrieve all jobs | Public |
 | `POST` | `/jobs` | Create a new job post | Public |
+| `DELETE` | `/jobs/:id` | Delete a job post | Public |
