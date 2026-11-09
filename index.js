@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(cors())
 
 
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 
 const client = new MongoClient(process.env.MONGODB_URI);
 
@@ -53,6 +53,13 @@ app.post('/jobs', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: err.message })
     }
+})
+
+app.delete('/jobs/:id', async(req,res)=>{
+  const id = req.params.id
+  const query = {_id: new ObjectId(id)}
+  const result = await jobs.deleteOne(query)
+  res.send(result)
 })
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
