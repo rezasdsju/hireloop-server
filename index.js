@@ -1,5 +1,5 @@
 import 'dotenv/config'
-import express from 'express';
+import express, { request } from 'express';
 import cors from 'cors'
 const app = express();
 const port = process.env.PORT || 5000;
@@ -90,6 +90,15 @@ app.delete('/jobs/:id', async(req,res)=>{
 })
 
 
+app.get('/applications', async(req,res)=>{
+  const query = {}
+  if (req.query.applicantId){
+    query.userId = req.query.applicantId
+  }
+  const cursor = applications.find(query)
+  const result = await cursor.toArray()
+  res.send(result)
+})
 app.post('/applications', async(req,res)=>{
   const application = req.body
   const result = await applications.insertOne(application)
