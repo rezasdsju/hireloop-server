@@ -23,10 +23,9 @@ This repository contains the backend API, built with Node.js and Express.
 - dotenv
 
 
-
 ## API Endpoints
 
-**Base URL:** [https://hireloop-jobs-server.vercel.app](https://hireloop-jobs-server.vercel.app)
+**Base URL:** https://hireloop-jobs-server.vercel.app
 
 | Method | Endpoint | Description | Access |
 |---|---|---|---|
@@ -37,3 +36,4 @@ This repository contains the backend API, built with Node.js and Express.
 | `POST` | `/jobs` | Create a new job post | Public |
 | `DELETE` | `/jobs/:id` | Delete a job post | Public |
 | `POST` | `/applications` | Submit a job application | Public |
+| `GET` | `/applications` | Retrieve applications (supports filtering by applicant ID) | Public |
