@@ -24,7 +24,6 @@ This repository contains the backend API, built with Node.js and Express.
 
 
 
-
 ## API Endpoints
 
 **Base URL:** [https://hireloop-jobs-server.vercel.app](https://hireloop-jobs-server.vercel.app)
@@ -33,7 +32,8 @@ This repository contains the backend API, built with Node.js and Express.
 |---|---|---|---|
 | `GET` | `/` | Home route | Public |
 | `GET` | `/users` | Retrieve all users | Public |
-| `GET` | `/jobs` | Retrieve all jobs | Public |
+| `GET` | `/jobs` | Retrieve all jobs (supports filtering and search) | Public |
 | `GET` | `/jobs/:id` | Retrieve a single job by ID | Public |
 | `POST` | `/jobs` | Create a new job post | Public |
 | `DELETE` | `/jobs/:id` | Delete a job post | Public |
+| `POST` | `/applications` | Submit a job application | Public |
