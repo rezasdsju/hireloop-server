@@ -2,7 +2,21 @@ import 'dotenv/config'
 import express, { request } from 'express';
 import cors from 'cors'
 import Stripe from 'stripe'
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
+
+let stripeClient = null
+
+// Create Stripe on first use so a missing key does not crash the whole API.
+const getStripe = () => {
+  const secretKey = process.env.STRIPE_SECRET_KEY
+  if (!secretKey) {
+    throw new Error('STRIPE_SECRET_KEY is not configured')
+  }
+  if (!stripeClient) {
+    stripeClient = new Stripe(secretKey)
+  }
+  return stripeClient
+}
+
 const app = express();
 const port = process.env.PORT || 5000;
 app.use(express.json())
@@ -274,7 +288,7 @@ app.post('/payments/checkout-verify', async (req, res) => {
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(sessionId)
+    const session = await getStripe().checkout.sessions.retrieve(sessionId)
     const {
       status,
       payment_status,
